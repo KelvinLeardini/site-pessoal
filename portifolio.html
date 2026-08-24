@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelvin Leardini - Portfólio</title>
+
+    <style>
+        body {
+            background-image: url('bgimg.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: rgb(129, 193, 253);
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .btn a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .conteudo-principal {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        aside {
+            flex: 1;
+        }
+
+        /* Estilização básica para destacar os projetos do portfólio */
+        article.projeto {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        footer {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header correto no topo, sem div ao redor -->
+    <header>
+        <a href="inicio.html"><img src="imglogo.png" alt="Logo" style="width: 100px;"></a>
+        
+        <nav>
+            <button class="btn"><a href="inicio.html">Início</a></button>
+            <button class="btn"><a href="sobre.html">Sobre</a></button>
+            <button class="btn"><a href="redes.html">Contato</a></button>
+            <button class="btn"><a href="portifolio.html">Portfólio</a></button>
+        </nav>
+    </header>
+
+    <!-- Corpo do Portfólio -->
+    <div class="conteudo-principal">
+        <main>
+            <section id="meus-projetos">
+                <h2>Meus Projetos</h2>
+
+                <!-- Cada projeto individual é envelopado por um ARTICLE -->
+                <article class="projeto">
+                    <h3>Projeto 1: Site Pessoal em HTML5</h3>
+                    <p>Desenvolvimento de uma estrutura web focada em semântica HTML5 e layout responsivo com CSS Flexbox para atividade acadêmica.</p>
+                </article>
+
+                <article class="projeto">
+                    <h3>Projeto 2: Análise de Sistemas</h3>
+                    <p>Documentação e modelagem de requisitos para desenvolvimento de software.</p>
+                </article>
+            </section>
+        </main>
+
+        <aside>
+            <h3>Tecnologias</h3>
+            <p>HTML5 / CSS3 / Lógica de Programação</p>
+        </aside>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Kelvin Leardini - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

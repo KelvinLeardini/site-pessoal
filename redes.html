@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelvin Leardini - Contato</title>
+
+    <style>
+        body {
+            background-image: url('bgimg.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: rgb(129, 193, 253);
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .btn a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        /* Container para alinhar Main e Aside lado a lado */
+        .conteudo-principal {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        aside {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        /* Garante que a imagem do main acompanhe o tamanho da tela */
+        main img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        footer {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header no topo, fora de divs -->
+    <header>
+        <a href="inicio.html"><img src="imglogo.png" alt="Logo" style="width: 100px;"></a>
+        
+        <nav>
+            <button class="btn"><a href="inicio.html">Início</a></button>
+            <button class="btn"><a href="sobre.html">Sobre</a></button>
+            <button class="btn"><a href="redes.html">Contato</a></button>
+            <button class="btn"><a href="portifolio.html">Portfólio</a></button>
+        </nav>
+    </header>
+
+    <!-- Único container flexível englobando Main e Aside -->
+    <div class="conteudo-principal">
+        
+        <main>
+            <section id="redes-sociais">
+                <h2>Minhas Redes Profissionais</h2>
+                <article>
+                    <img src="imglinkedin.png" alt="Perfil do LinkedIn">
+                </article>
+            </section>
+        </main>
+
+        <aside>
+            <h3>Conecte-se comigo</h3>
+            <a href="https://wa.link/m0qdn5" target="_blank" rel="noopener noreferrer">
+                <img src="whats.webp" alt="WhatsApp" style="width: 50px;">
+            </a>
+            <a href="https://github.com/KelvinLeardini" target="_blank" rel="noopener noreferrer">
+                <img src="github.png" alt="GitHub" style="width: 50px;">
+            </a>
+            <a href="https://www.linkedin.com/in/kelvinleardini/" target="_blank" rel="noopener noreferrer">
+                <img src="linkedin.png" alt="LinkedIn" style="width: 48px;">
+            </a>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kelvin Leardini - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

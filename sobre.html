@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelvin Leardini - Sobre</title>
+
+    <style>
+        body {
+            background-image: url('bgimg.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: rgb(129, 193, 253);
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .btn a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .conteudo-principal {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        aside {
+            flex: 1;
+        }
+
+        footer {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header correto fora da div principal -->
+    <header>
+        <a href="inicio.html"><img src="imglogo.png" alt="Logo" style="width: 100px;"></a>
+        
+        <nav>
+            <button class="btn"><a href="inicio.html">Início</a></button>
+            <button class="btn"><a href="sobre.html">Sobre</a></button>
+            <button class="btn"><a href="redes.html">Contato</a></button>
+            <button class="btn"><a href="portifolio.html">Portfólio</a></button>
+        </nav>
+    </header>
+
+    <!-- Div principal englobando Main e Aside -->
+    <div class="conteudo-principal">
+        
+        <main>
+            <!-- Uso do SECTION para agrupar o tema geral -->
+            <section id="sobre">
+                <h2>Sobre Mim</h2>
+                
+                <!-- Uso do ARTICLE para um bloco com conteúdo próprio e completo -->
+                <article>
+                    <p>Sou estudante de Análise e Desenvolvimento de Sistemas e estou iniciando minha jornada na área de Tecnologia da Informação.</p>
+                    <p>Tenho grande interesse em aprender, desenvolver novas habilidades e compreender as diversas áreas da tecnologia, como desenvolvimento de software, banco de dados e análise de sistemas.</p>
+                </article>
+            </section>
+
+            <section id="objetivos">
+                <h3>Objetivo Profissional</h3>
+                <article>
+                    <p>Neste momento, meu objetivo é construir uma base sólida de conhecimentos e descobrir, por meio da prática, a área com a qual mais me identifico.</p>
+                    <p>Busco uma oportunidade de estágio que me permita aplicar o que estou aprendendo, adquirir experiência prática e evoluir profissionalmente ao lado de pessoas que compartilham o interesse por tecnologia e inovação.</p>
+                </article>
+            </section>
+
+            <section id="valores">
+                <h3>Visão de Carreira</h3>
+                <article>
+                    <p>Acredito que dedicação, aprendizado contínuo e vontade de crescer são os pilares para construir uma carreira de sucesso na área de TI.</p>
+                </article>
+            </section>
+        </main>
+
+        <!-- Barra lateral (caso queira adicionar links ou avisos no futuro) -->
+        <aside>
+            <h3>Info Rápida</h3>
+            <p>Curso: ADS</p>
+            <p>Foco: Desenvolvimento Web & Sistemas</p>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kelvin Leardini - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
