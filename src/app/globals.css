@@ -1,0 +1,480 @@
+/* ==========================================================================
+   1. RESET E VARIÁVEIS (DESIGN SYSTEM BÁSICO)
+   ========================================================================== */
+:root {
+    /* Cores Dark Mode */
+    --cor-primaria: #38bdf8;
+    --cor-primaria-hover: #0284c7;
+    --cor-texto: #f8fafc;
+    --cor-texto-secundario: #94a3b8;
+    --cor-fundo-card: #1e293b;
+    --cor-fundo-card-hover: #334155;
+    --cor-borda: #334155;
+    
+    /* Fontes e Sombras */
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --sombra-card: 0 4px 30px rgba(0, 0, 0, 0.1);
+    --raio-borda: 8px;
+    --transicao-suave: all 0.3s ease;
+}
+
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #020617; /* Fundo base escuro fixo */
+    font-family: var(--fonte-principal);
+    color: var(--cor-texto);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* A "geleca" flutuante que se move por toda a tela */
+body::before {
+    content: '';
+    position: fixed; /* Fixado na tela inteira, acompanha a rolagem */
+    top: -30%;
+    left: -30%;
+    width: 80vw;
+    height: 80vw;
+    min-width: 600px;
+    min-height: 600px;
+    
+    /* Cores do gel com efeito translúcido */
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(2, 132, 199, 0.15) 50%, transparent 70%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Formato orgânico de bolha deformável */
+    
+    filter: blur(70px); /* O desfoque pesado que dá o aspecto de gel */
+    z-index: -1; /* Joga estritamente para o fundo */
+    pointer-events: none; /* O mouse passa direto por ele */
+    
+    /* Animação que faz a geleca passear aleatoriamente pela tela */
+    animation: gelecaPasseando 16s ease-in-out infinite alternate;
+}
+
+/* O caminho aleatório que a geleca faz cobrindo a tela toda */
+@keyframes gelecaPasseando {
+    0% {
+        transform: translate(0vw, 0vh) scale(1) rotate(0deg);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    33% {
+        transform: translate(50vw, 25vh) scale(1.25) rotate(45deg);
+        border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+    }
+    66% {
+        transform: translate(20vw, 55vh) scale(0.9) rotate(90deg);
+        border-radius: 30% 70% 50% 50% / 70% 30% 50% 50%;
+    }
+    100% {
+        transform: translate(60vw, 10vh) scale(1.15) rotate(135deg);
+        border-radius: 50% 50% 40% 60% / 40% 40% 60% 60%;
+    }
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    color: var(--cor-texto);
+}
+
+/* ==========================================================================
+   2. HEADER E NAVEGAÇÃO
+   ========================================================================== */
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+.logo-img {
+    width: 100px;
+    height: auto;
+    display: block;
+    transition: var(--transicao-suave);
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* Leve efeito ao passar o mouse na logo */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 12px;
+}
+
+/* Estilização dos Links de Navegação (Substituiu os buttons antigos) */
+.btn-nav {
+    position: relative;
+    padding: 8px 16px;
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    font-weight: 500;
+    overflow: hidden; /* Esconde o preenchimento que vai vir de fora */
+    transition: color 0.4s ease;
+    z-index: 1; /* Garante que o texto fique por cima da cor */
+    border-radius: var(--raio-borda);
+}
+
+.btn-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0; /* Começa sem largura */
+    height: 100%;
+    background-color: var(--cor-primaria);
+    z-index: -1; /* Fica atrás do texto */
+    transition: width 0.4s ease; /* A mágica da transição de preenchimento */
+    border-radius: var(--raio-borda);
+}
+
+.btn-nav:hover {
+    color: #ffffff;
+}
+
+.btn-nav:hover::before {
+    width: 100%;
+}
+
+.btn-nav.ativo {
+    color: #ffffff;
+    background-color: var(--cor-primaria);
+}
+
+/* ==========================================================================
+   3. CONTEÚDO PRINCIPAL (MAIN E ASIDE)
+   ========================================================================== */
+.conteudo-principal {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+    flex: 1; /* Garante que o conteúdo expanda e empurre o footer para baixo */
+    margin-bottom: 30px;
+}
+
+main {
+    width: 100%;;
+}
+
+.sidebar-novidades {
+    flex: 1;
+    flex-direction: column;
+}
+
+.sidebar-novidades .card-aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Card Visual para Apresentação */
+.card-apresentacao {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    padding: 24px;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    margin-top: 15px;
+}
+
+.card-apresentacao h3 {
+    margin-bottom: 12px;
+}
+
+
+
+/* ==========================================================================
+   4. RODAPÉ
+   ========================================================================== */
+.rodape-principal {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto; /* Empurra para o final da tela */
+    font-size: 0.9rem;
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    color: var(--cor-texto-secundario);
+}
+
+/* ==========================================================================
+   6. NOVO CONTEÚDO DA HOME (HERO, STACK E ASIDE)
+   ========================================================================== */
+
+/* Card Hero Principal */
+.hero-card {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    padding: 32px;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    margin-bottom: 24px;
+}
+
+.badge-status {
+    display: inline-block;
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--cor-primaria);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.hero-card h1 {
+    font-size: 2.2rem;
+    margin-bottom: 4px;
+}
+
+.hero-card h2 {
+    font-size: 1.2rem;
+    color: var(--cor-primaria);
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.descricao-hero {
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+    color: var(--cor-texto-secundario);
+}
+
+.hero-acoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Botões de Ação (CTA) */
+.btn-cta {
+    padding: 12px 22px;
+    border-radius: var(--raio-borda);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transicao-suave);
+}
+
+.btn-cta.primario {
+    background-color: var(--cor-primaria);
+    color: #0f172a;
+}
+
+.btn-cta.primario:hover {
+    background-color: var(--cor-primaria-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+.btn-cta.secundario {
+    background-color: transparent;
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+}
+
+.btn-cta.secundario:hover {
+    background-color: var(--cor-fundo-card-hover);
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+    transform: translateY(-2px);
+}
+
+/* Seção de Tecnologias (CSS Grid) */
+#tecnologias h3 {
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+.grid-tecnologias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: stretch; /* Força tudo a tentar ter a mesma altura */
+    margin-top: 2rem;
+}
+
+.grid-tecnologias > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-tech {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    
+    /* Configuração Flex para esticar o card e o conteúdo */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Força o card a preencher todo o espaço vertical da grid */
+    flex-grow: 1;
+    text-align: left; /* Alinhamento mais profissional à esquerda */
+}
+
+.card-tech p {
+    flex-grow: 1; /* Esse cara "come" o espaço que sobrar */
+    margin-bottom: 20px;
+    color: var(--cor-texto-secundario) !important; 
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.card-tech h4 {
+    margin: 12px 0 8px 0;
+    font-size: 1.15rem;
+}
+
+.card-tech .btn-block {
+    margin-top: auto;
+}
+
+.card-tech:hover .tech-icon {
+    color: var(--cor-texto-principal);
+}
+
+.card-tech:hover {
+    transform: translateY(-4px);
+    border-color: var(--cor-primaria);
+    background-color: var(--cor-fundo-card-hover);
+}
+
+.tech-icon {
+    font-size: 38px;
+    color: var(--cor-primaria);
+    display: block;
+    margin-bottom: 12px;
+    transition: var(--transicao-suave);
+}
+
+.card-tech h4 {
+    margin-bottom: 6px;
+}
+
+.card-tech p {
+    font-size: 0.88rem;
+    color: var(--cor-texto-secundario);
+    line-height: 1.4;
+}
+
+/* Sidebar / Aside */
+.card-aside {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    padding: 24px;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+}
+
+.card-aside h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.divisor-aside {
+    border: none;
+    border-top: 1px solid var(--cor-borda);
+    margin: 16px 0;
+}
+
+.card-aside h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.texto-destaque {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 10px;
+}
+
+.link-discreto {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.link-discreto:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. CLASSES UTILITÁRIAS E AJUSTES DE COMPONENTES
+   ========================================================================== */
+
+/* Transforma o botão para ocupar 100% da largura do card e centralizar */
+.btn-block {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* Espaçamento entre parágrafos dentro dos articles (Página Sobre) */
+article p + p {
+    margin-top: 10px;
+}
+
+/* Ajustes específicos da barra lateral de contato */
+.card-aside .texto-destaque {
+    margin-bottom: 12px;
+}
+
+.contato-email {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+
+/* ==========================================================================
+   5. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header-principal {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .conteudo-principal {
+        flex-direction: column; /* Empilha Main e Aside no celular */
+    }
+
+    main, .sidebar-novidades {
+        width: 100%;
+    }
+}

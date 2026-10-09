@@ -1,0 +1,381 @@
+/* ==========================================================================
+   1. RESET E VARIÁVEIS (DESIGN SYSTEM BÁSICO)
+   ========================================================================== */
+:root {
+    /* Cores Dark Mode */
+    --cor-primaria: #38bdf8;
+    --cor-primaria-hover: #0284c7;
+    --cor-texto: #f8fafc;
+    --cor-texto-secundario: #94a3b8;
+    --cor-fundo: #0f172a;
+    --cor-fundo-card: #1e293b;
+    --cor-fundo-card-hover: #334155;
+    --cor-borda: #334155;
+    
+    /* Fontes e Sombras */
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --raio-borda: 8px;
+    --transicao-suave: all 0.3s ease;
+}
+
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    min-height: 100vh;
+    font-family: var(--fonte-principal);
+    color: var(--cor-texto);
+    padding: 20px;
+    
+    /* Organiza header, conteúdo e footer em coluna vertical */
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+    color: var(--cor-texto);
+}
+
+/* ==========================================================================
+   2. HEADER E NAVEGAÇÃO
+   ========================================================================== */
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+.logo-img {
+    width: 100px;
+    height: auto;
+    display: block;
+    transition: var(--transicao-suave);
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* Leve efeito ao passar o mouse na logo */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 12px;
+}
+
+/* Estilização dos Links de Navegação (Substituiu os buttons antigos) */
+.btn-nav {
+    display: inline-block;
+    background-color: var(--cor-fundo-card);
+    color: var(--cor-texto);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: var(--raio-borda);
+    border: 1px solid var(--cor-borda);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transicao-suave);
+}
+
+.btn-nav:hover {
+    background-color: var(--cor-fundo-card-hover);
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+    transform: translateY(-2px); /* Eleva ligeiramente o botão */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-nav.ativo {
+    background-color: var(--cor-primaria);
+    color: #0f172a;
+    border-color: var(--cor-primaria);
+}
+
+/* ==========================================================================
+   3. CONTEÚDO PRINCIPAL (MAIN E ASIDE)
+   ========================================================================== */
+.conteudo-principal {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    flex: 1; /* Garante que o conteúdo expanda e empurre o footer para baixo */
+    margin-bottom: 30px;
+}
+
+main {
+    flex: 3;
+}
+
+.sidebar-novidades {
+    flex: 1;
+}
+
+/* Card Visual para Apresentação */
+.card-apresentacao {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    padding: 24px;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    margin-top: 15px;
+}
+
+.card-apresentacao h3 {
+    margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   4. RODAPÉ
+   ========================================================================== */
+.rodape-principal {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto; /* Empurra para o final da tela */
+    font-size: 0.9rem;
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    color: var(--cor-texto-secundario);
+}
+
+/* ==========================================================================
+   6. NOVO CONTEÚDO DA HOME (HERO, STACK E ASIDE)
+   ========================================================================== */
+
+/* Card Hero Principal */
+.hero-card {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    padding: 32px;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    margin-bottom: 24px;
+}
+
+.badge-status {
+    display: inline-block;
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--cor-primaria);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.hero-card h1 {
+    font-size: 2.2rem;
+    margin-bottom: 4px;
+}
+
+.hero-card h2 {
+    font-size: 1.2rem;
+    color: var(--cor-primaria);
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.descricao-hero {
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+    color: var(--cor-texto-secundario);
+}
+
+.hero-acoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Botões de Ação (CTA) */
+.btn-cta {
+    padding: 12px 22px;
+    border-radius: var(--raio-borda);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transicao-suave);
+}
+
+.btn-cta.primario {
+    background-color: var(--cor-primaria);
+    color: #0f172a;
+}
+
+.btn-cta.primario:hover {
+    background-color: var(--cor-primaria-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+.btn-cta.secundario {
+    background-color: transparent;
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+}
+
+.btn-cta.secundario:hover {
+    background-color: var(--cor-fundo-card-hover);
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+    transform: translateY(-2px);
+}
+
+/* Seção de Tecnologias (CSS Grid) */
+#tecnologias h3 {
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+.grid-tecnologias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.card-tech {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    padding: 20px;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    transition: var(--transicao-suave);
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.card-tech .btn-block {
+    margin-top: auto;
+}
+
+.card-tech:hover .tech-icon {
+    color: var(--cor-texto-principal);
+}
+
+.card-tech:hover {
+    transform: translateY(-4px);
+    border-color: var(--cor-primaria);
+    background-color: var(--cor-fundo-card-hover);
+}
+
+.tech-icon {
+    font-size: 38px;
+    color: var(--cor-primaria);
+    display: block;
+    margin-bottom: 12px;
+    transition: var(--transicao-suave);
+}
+
+.card-tech h4 {
+    margin-bottom: 6px;
+}
+
+.card-tech p {
+    font-size: 0.88rem;
+    color: var(--cor-texto-secundario);
+    line-height: 1.4;
+}
+
+/* Sidebar / Aside */
+.card-aside {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-borda);
+    padding: 20px;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+}
+
+.card-aside h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.divisor-aside {
+    border: none;
+    border-top: 1px solid var(--cor-borda);
+    margin: 16px 0;
+}
+
+.card-aside h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.texto-destaque {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 10px;
+}
+
+.link-discreto {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.link-discreto:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. CLASSES UTILITÁRIAS E AJUSTES DE COMPONENTES
+   ========================================================================== */
+
+/* Transforma o botão para ocupar 100% da largura do card e centralizar */
+.btn-block {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* Espaçamento entre parágrafos dentro dos articles (Página Sobre) */
+article p + p {
+    margin-top: 10px;
+}
+
+/* Ajustes específicos da barra lateral de contato */
+.card-aside .texto-destaque {
+    margin-bottom: 12px;
+}
+
+.contato-email {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   5. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header-principal {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .conteudo-principal {
+        flex-direction: column; /* Empilha Main e Aside no celular */
+    }
+
+    main, .sidebar-novidades {
+        width: 100%;
+    }
+}
