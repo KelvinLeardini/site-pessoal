@@ -45,13 +45,13 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
-  background-color: var(--canvas);
+  background-color: #0b0c0e;
   color: var(--text-main);
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--canvas);
+  background-color: transparent;
   color: var(--text-main);
   min-height: 100vh;
   line-height: 1.6;
@@ -65,26 +65,23 @@ body {
    ========================================================================== */
 .bg-canvas-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
-  background-color: var(--canvas);
+  background-color: #0b0c0e;
 }
 
-/* 1. Grid cibernético sutil */
+/* 1. Grid cibernético com maior presença e contraste */
 .bg-grid-pattern {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, black 40%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, black 40%, transparent 80%);
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 38px 38px;
 }
 
 /* 2. Spotlight que segue o cursor do mouse */
@@ -95,8 +92,8 @@ body {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(56, 189, 248, 0.03) 40%, transparent 70%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(56, 189, 248, 0.08) 40%, transparent 70%);
+  filter: blur(35px);
   will-change: transform;
   pointer-events: none;
   transition: transform 0.08s ease-out;
@@ -106,36 +103,36 @@ body {
 .floating-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.6;
+  filter: blur(80px);
+  opacity: 0.85;
   pointer-events: none;
 }
 
 .orb-cyan {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, transparent 70%);
-  top: -15%;
-  left: 20%;
-  animation: floatOrbOne 22s ease-in-out infinite alternate;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0.1) 45%, transparent 70%);
+  top: -10%;
+  left: 15%;
+  animation: floatOrbOne 18s ease-in-out infinite alternate;
 }
 
 .orb-purple {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(192, 132, 252, 0.16) 0%, transparent 70%);
-  top: 35%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.3) 0%, rgba(192, 132, 252, 0.08) 45%, transparent 70%);
+  top: 30%;
   right: -5%;
-  animation: floatOrbTwo 28s ease-in-out infinite alternate;
+  animation: floatOrbTwo 22s ease-in-out infinite alternate;
 }
 
 .orb-emerald {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(52, 211, 153, 0.12) 0%, transparent 70%);
-  bottom: -10%;
-  left: 10%;
-  animation: floatOrbThree 25s ease-in-out infinite alternate;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.25) 0%, rgba(52, 211, 153, 0.06) 45%, transparent 70%);
+  bottom: -5%;
+  left: 5%;
+  animation: floatOrbThree 20s ease-in-out infinite alternate;
 }
 
 /* Animações fluidas e lentas para os Orbs */
@@ -360,6 +357,8 @@ body {
    WRAPPER ONE-PAGE & SEÇÕES
    ========================================================================== */
 .onepage-wrapper {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 110px 24px 60px;
