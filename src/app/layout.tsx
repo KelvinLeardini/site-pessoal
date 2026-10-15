@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import BackgroundEffects from "@/components/BackgroundEffects";
 
 export const metadata: Metadata = {
   title: "Kelvin Leardini | Desenvolvedor Web & ADS",
@@ -29,6 +30,8 @@ export default function RootLayout({
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
       </head>
       <body>
+        {/* Efeitos visuais de fundo dinâmico (Grid dev + Orbs + Spotlight do mouse) */}
+        <BackgroundEffects />
         <Header />
         <main>{children}</main>
         <Footer />

@@ -60,20 +60,111 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Fundo com efeito de Luz Ambiente (Spotlight radial sutil) */
-body::before {
-  content: "";
+/* ==========================================================================
+   SISTEMA DE FUNDO DINÂMICO (GRID DEV + LUZES FLUTUANTES + MOUSE SPOTLIGHT)
+   ========================================================================== */
+.bg-canvas-wrapper {
   position: fixed;
-  top: -150px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(192, 132, 252, 0.05) 50%, transparent 70%);
-  filter: blur(80px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: -1;
+  overflow: hidden;
+  background-color: var(--canvas);
 }
+
+/* 1. Grid cibernético sutil */
+.bg-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, black 40%, transparent 80%);
+}
+
+/* 2. Spotlight que segue o cursor do mouse */
+.mouse-spotlight {
+  position: absolute;
+  top: -250px;
+  left: -250px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(56, 189, 248, 0.03) 40%, transparent 70%);
+  filter: blur(40px);
+  will-change: transform;
+  pointer-events: none;
+  transition: transform 0.08s ease-out;
+}
+
+/* 3. Luzes Flutuantes Orgânicas (Orbs) */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.orb-cyan {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, transparent 70%);
+  top: -15%;
+  left: 20%;
+  animation: floatOrbOne 22s ease-in-out infinite alternate;
+}
+
+.orb-purple {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.16) 0%, transparent 70%);
+  top: 35%;
+  right: -5%;
+  animation: floatOrbTwo 28s ease-in-out infinite alternate;
+}
+
+.orb-emerald {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.12) 0%, transparent 70%);
+  bottom: -10%;
+  left: 10%;
+  animation: floatOrbThree 25s ease-in-out infinite alternate;
+}
+
+/* Animações fluidas e lentas para os Orbs */
+@keyframes floatOrbOne {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(120px, 80px) scale(1.12); }
+  100% { transform: translate(-80px, 140px) scale(0.95); }
+}
+
+@keyframes floatOrbTwo {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(-140px, -90px) scale(1.18); }
+  100% { transform: translate(80px, 60px) scale(0.9); }
+}
+
+@keyframes floatOrbThree {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(100px, -110px) scale(1.1); }
+  100% { transform: translate(-90px, -60px) scale(0.98); }
+}
+
+/* 4. Vinheta periférica suave */
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 140px rgba(11, 12, 14, 0.85);
+  pointer-events: none;
+}
+
 
 /* Utilitários */
 .font-mono {
