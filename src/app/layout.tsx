@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import BackgroundEffects from "@/components/BackgroundEffects";
+import TechNetworkBackground from "@/components/TechNetworkBackground";
 
 export const metadata: Metadata = {
-  title: "Kelvin Leardini | Desenvolvedor Web & ADS",
-  description: "Portfólio de Kelvin Leardini - Estudante de Análise e Desenvolvimento de Sistemas, Desenvolvedor Front-end, Next.js e TypeScript.",
-  keywords: ["Kelvin Leardini", "Desenvolvedor Front-end", "Next.js", "React", "TypeScript", "ADS", "Portfólio"],
+  title: "Kelvin Leardini | Estudante de ADS & Desenvolvedor em Formação",
+  description: "Portfólio de Kelvin Leardini - Estudante de Análise e Desenvolvimento de Sistemas. Foco atual em SQL, AWS Cloud, Front-End (React, Next.js, Vue, TS) e Python. Aberto a estágios e projetos freelance.",
+  keywords: ["Kelvin Leardini", "Análise e Desenvolvimento de Sistemas", "ADS", "SQL", "AWS", "Next.js", "React", "Vue", "TypeScript", "Python"],
   authors: [{ name: "Kelvin Leardini" }],
 };
 
@@ -30,8 +30,8 @@ export default function RootLayout({
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
       </head>
       <body>
-        {/* Efeitos visuais de fundo dinâmico (Grid dev + Orbs + Spotlight do mouse) */}
-        <BackgroundEffects />
+        {/* Fundo de rede com fade-out: fica estático no topo (Hero) e desce para o preto total */}
+        <TechNetworkBackground />
         <Header />
         <main>{children}</main>
         <Footer />

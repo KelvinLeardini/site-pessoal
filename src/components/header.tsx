@@ -13,16 +13,26 @@ export default function Header() {
       // Efeito de sombra e opacidade quando desce a página
       setScrolled(window.scrollY > 20);
 
-      // Detecta qual seção está visível na tela para marcar no menu
-      const secoes = ["inicio", "sobre", "stack", "projetos", "contato"];
-      const scrollPos = window.scrollY + 160;
+      // 1. Caso especial: se o usuário chegou perto do final da página, ativa 'contato'
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const isBottom = window.scrollY + windowHeight >= documentHeight - 60;
 
-      for (const id of secoes) {
+      if (isBottom) {
+        setActiveSection("contato");
+        return;
+      }
+
+      // 2. Detecta qual seção está com o topo na faixa de visualização
+      const secoes = ["inicio", "sobre", "stack", "projetos", "contato"];
+      const scrollPos = window.scrollY + 200;
+
+      for (let i = secoes.length - 1; i >= 0; i--) {
+        const id = secoes[i];
         const elemento = document.getElementById(id);
         if (elemento) {
           const topo = elemento.offsetTop;
-          const altura = elemento.offsetHeight;
-          if (scrollPos >= topo && scrollPos < topo + altura) {
+          if (scrollPos >= topo) {
             setActiveSection(id);
             break;
           }
@@ -30,7 +40,7 @@ export default function Header() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

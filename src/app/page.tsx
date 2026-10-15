@@ -1,5 +1,6 @@
 import FadeIn from "@/components/FadeIn";
 import Typewriter from "@/components/Typewriter";
+import MorphingBlob3D from "@/components/MorphingBlob3D";
 
 interface Repositorio {
   id: number;
@@ -37,11 +38,14 @@ export default async function Home() {
           1. SEÇÃO INÍCIO (HERO SECTION)
          ======================================================== */}
       <section id="inicio" className="section-hero">
+        {/* 3D Morphing Blob volumétrico em WebGL centralizado atrás do texto e card */}
+        <MorphingBlob3D />
+
         <div className="hero-content">
           <FadeIn delay={0.1}>
             <div className="hero-badge-container">
               <span className="badge-pulse"></span>
-              <span className="badge-text">Disponível para Projetos & Estágio</span>
+              <span className="badge-text">Estudante de ADS &bull; Aberto a Estágio & Freelas</span>
             </div>
           </FadeIn>
 
@@ -54,8 +58,8 @@ export default async function Home() {
           <FadeIn delay={0.3}>
             <p className="hero-subtitle">
               Olá! Sou <strong className="highlight-text">Kelvin Leardini</strong>, estudante de 
-              <strong> Análise e Desenvolvimento de Sistemas</strong> com paixão por arquitetura front-end,
-              APIs e boas práticas de código.
+              <strong> Análise e Desenvolvimento de Sistemas</strong> com grande entusiasmo por tecnologia,
+              desenvolvimento de software e boas práticas de código.
             </p>
           </FadeIn>
 
@@ -98,44 +102,47 @@ export default async function Home() {
                 <span className="dot dot-yellow"></span>
                 <span className="dot dot-green"></span>
               </div>
-              <span className="ide-filename">profile.ts</span>
+              <span className="ide-filename">kelvin.ts</span>
               <span className="ide-status">TypeScript</span>
             </div>
             <div className="ide-body font-mono">
               <p><span className="code-keyword">const</span> <span className="code-var">developer</span> = &#123;</p>
               <p className="code-indent-1">
-                <span className="code-prop">name:</span> <span className="code-string">"Kelvin Leardini"</span>,
+                <span className="code-prop">nome:</span> <span className="code-string">"Kelvin Leardini"</span>,
               </p>
               <p className="code-indent-1">
-                <span className="code-prop">focus:</span> <span className="code-string">"Front-End & Sistemas Web"</span>,
+                <span className="code-prop">formacao:</span> <span className="code-string">"Análise e Dev. de Sistemas"</span>,
               </p>
               <p className="code-indent-1">
-                <span className="code-prop">academic:</span> <span className="code-string">"Análise e Dev. de Sistemas"</span>,
+                <span className="code-prop">mentalidade:</span> <span className="code-string">"Evolução contínua & entrega de valor"</span>,
               </p>
               <p className="code-indent-1">
-                <span className="code-prop">location:</span> <span className="code-string">"São Paulo, Brasil"</span>,
-              </p>
-              <p className="code-indent-1">
-                <span className="code-prop">skills:</span> [
+                <span className="code-prop">focoDeDesenvolvimento:</span> [
               </p>
               <p className="code-indent-2">
-                <span className="code-string">"React"</span>, <span className="code-string">"Next.js"</span>, <span className="code-string">"TypeScript"</span>,
+                <span className="code-string">"Arquitetura Web & Front-End Moderno"</span>,
               </p>
               <p className="code-indent-2">
-                <span className="code-string">"Node.js"</span>, <span className="code-string">"Python"</span>, <span className="code-string">"Git"</span>
+                <span className="code-string">"Modelagem e Consultas SQL"</span>,
+              </p>
+              <p className="code-indent-2">
+                <span className="code-string">"Fundamentos de Cloud (AWS)"</span>
               </p>
               <p className="code-indent-1">],</p>
               <p className="code-indent-1">
-                <span className="code-prop">openForWork:</span> <span className="code-boolean">true</span>
+                <span className="code-prop">disponibilidade:</span> <span className="code-string">"Estágio / Trainee / Júnior"</span>,
+              </p>
+              <p className="code-indent-1">
+                <span className="code-prop">prontoParaSomar:</span> <span className="code-boolean">true</span>
               </p>
               <p>&#125;;</p>
               <div className="ide-command-line">
                 <Typewriter
                   prefix="$ "
                   words={[
-                    "npm run build:future",
-                    "git commit -m 'feat: ready for new challenges'",
-                    "kelvin.contact()"
+                    "SELECT * FROM competencias WHERE status = 'estudando';",
+                    "aws s3 ls && npm run dev",
+                    "git commit -m 'feat: aprendizado continuo'"
                   ]}
                   typingSpeed={75}
                   deletingSpeed={35}
@@ -153,55 +160,61 @@ export default async function Home() {
       <section id="sobre" className="section-block">
         <div className="section-header">
           <span className="section-label font-mono">02 // QUEM SOU</span>
-          <h2 className="section-title">Sobre Minha Trajetória</h2>
+          <h2 className="section-title">Minha Jornada & Estudos</h2>
           <div className="section-divider"></div>
         </div>
 
         <div className="about-grid">
           <FadeIn delay={0.1} className="about-text-card card-surface">
             <div className="card-top-icon">
-              <i className="bx bx-user-circle"></i>
+              <i className="bx bx-book-open"></i>
             </div>
-            <h3>Formação & Propósito</h3>
+            <h3>Formação Acadêmica & Foco</h3>
             <p>
-              Sou estudante de <strong>Análise e Desenvolvimento de Sistemas (ADS)</strong> e estou 
-              construindo minha caminhada na área de Tecnologia da Informação com foco prático e sólido.
+              Sou estudante de <strong>Análise e Desenvolvimento de Sistemas (ADS)</strong>. 
+              Estou construindo minha base técnica com dedicação diária, entendendo os conceitos por trás do código e 
+              desenvolvendo projetos práticos para consolidar cada matéria.
             </p>
             <p>
-              Tenho grande entusiasmo em resolver problemas por meio do desenvolvimento de software,
-              sempre com atenção à estrutura de dados, clareza no código e experiência de navegação do usuário.
+              No momento, dedico meu tempo de estudo a três pilares essenciais: <strong>Modelagem e consultas em SQL</strong>, 
+              fundamentos de <strong>Cloud Computing com AWS</strong>, e desenvolvimento <strong>Front-End interativo</strong> (com React, Next.js e explorando Vue). Também já estudei e criei automações e scripts com <strong>Python</strong>.
             </p>
             
             <div className="about-pills">
-              <span className="about-pill"><i className="bx bx-check"></i> Foco em Aprendizado</span>
-              <span className="about-pill"><i className="bx bx-check"></i> Código Limpo</span>
-              <span className="about-pill"><i className="bx bx-check"></i> Trabalho em Equipe</span>
-              <span className="about-pill"><i className="bx bx-check"></i> Pró-ativo</span>
+              <span className="about-pill"><i className="bx bx-check"></i> Aprendizado Ativo</span>
+              <span className="about-pill"><i className="bx bx-check"></i> Prática com Projetos</span>
+              <span className="about-pill"><i className="bx bx-check"></i> Curiosidade Técnica</span>
+              <span className="about-pill"><i className="bx bx-check"></i> Aberto a Feedbacks</span>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.2} className="about-stats-card card-surface">
             <div className="card-top-icon">
-              <i className="bx bx-target-lock"></i>
+              <i className="bx bx-briefcase"></i>
             </div>
-            <h3>Objetivo Profissional</h3>
+            <h3>Objetivos & Oportunidades</h3>
             <p>
-              Busco uma oportunidade de <strong>Estágio em Desenvolvimento de Software ou TI</strong> para
-              aplicar meus conhecimentos, colaborar em projetos reais e crescer tecnicamente em conjunto com o time.
+              Tenho total clareza de que estou no início da minha carreira em formação. Busco minha primeira 
+              oportunidade de <strong>Estágio em TI / Desenvolvimento</strong> para aprender na prática com desenvolvedores mais experientes, 
+              além de estar aberto a <strong>trabalhos freelance</strong> para criação de sites e interfaces.
             </p>
 
             <div className="meta-box-group">
               <div className="meta-box">
-                <span className="meta-label font-mono">Curso</span>
-                <span className="meta-value">Análise e Dev. de Sistemas</span>
+                <span className="meta-label font-mono">Formação</span>
+                <span className="meta-value">Análise e Dev. de Sistemas (ADS)</span>
               </div>
               <div className="meta-box">
-                <span className="meta-label font-mono">Disponibilidade</span>
-                <span className="meta-value">Estágio / Júnior</span>
+                <span className="meta-label font-mono">Objetivo</span>
+                <span className="meta-value">Estágio, Trainee ou Júnior</span>
+              </div>
+              <div className="meta-box">
+                <span className="meta-label font-mono">Estudos Atuais</span>
+                <span className="meta-value">SQL &bull; AWS Cloud &bull; Front-End</span>
               </div>
               <div className="meta-box">
                 <span className="meta-label font-mono">Localização</span>
-                <span className="meta-value">São Paulo - SP (Híbrido/Remoto)</span>
+                <span className="meta-value">São Paulo - SP (Híbrido / Remoto)</span>
               </div>
             </div>
           </FadeIn>
@@ -209,102 +222,117 @@ export default async function Home() {
       </section>
 
       {/* ========================================================
-          3. SEÇÃO STACK & TECNOLOGIAS
+          3. SEÇÃO STACK & TECNOLOGIAS EM ESTUDO (SEPARADAS POR ÁREA)
          ======================================================== */}
       <section id="stack" className="section-block">
         <div className="section-header">
-          <span className="section-label font-mono">03 // COMPETÊNCIAS</span>
-          <h2 className="section-title">Minha Stack & Ferramentas</h2>
+          <span className="section-label font-mono">03 // COMPETÊNCIAS EM ESTUDO</span>
+          <h2 className="section-title">O que Venho Estudando & Praticando</h2>
+          <p className="section-desc">
+            Organizado por categorias técnicas: linguagens, frameworks, banco de dados, cloud e ferramentas:
+          </p>
           <div className="section-divider"></div>
         </div>
 
         <div className="tech-cards-grid">
+          {/* Card 1: Banco de Dados Relacional (SQL) */}
           <FadeIn delay={0.1}>
+            <div className="card-tech-modern card-surface">
+              <div className="tech-badge-icon tools">
+                <i className="bx bx-data"></i>
+              </div>
+              <h4>Banco de Dados & SQL</h4>
+              <p>Foco de estudo atual: modelagem relacional, criação de tabelas, consultas (SELECT, JOINs, filtros) e manipulação de dados.</p>
+              <div className="tags-tech font-mono">
+                <span>SQL</span>
+                <span>Modelagem</span>
+                <span>Queries</span>
+                <span>Relacional</span>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Card 2: Cloud Computing (AWS) */}
+          <FadeIn delay={0.2}>
+            <div className="card-tech-modern card-surface">
+              <div className="tech-badge-icon" style={{ background: "rgba(251, 191, 36, 0.15)", color: "#fbbf24" }}>
+                <i className="bx bx-cloud"></i>
+              </div>
+              <h4>Cloud Computing (AWS)</h4>
+              <p>Estudando os fundamentos da nuvem da Amazon (AWS Foundations): EC2, S3, IAM, conceitos de arquitetura e serviços essenciais.</p>
+              <div className="tags-tech font-mono">
+                <span>AWS Cloud</span>
+                <span>S3</span>
+                <span>EC2</span>
+                <span>Conceitos Cloud</span>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Card 3: Frameworks Front-End */}
+          <FadeIn delay={0.3}>
             <div className="card-tech-modern card-surface">
               <div className="tech-badge-icon react">
                 <i className="bx bxl-react"></i>
               </div>
-              <h4>React & Next.js</h4>
-              <p>Criação de SPAs modernas, Server Components, roteamento por pasta (App Router) e renderização ágil.</p>
+              <h4>Frameworks Front-End</h4>
+              <p>Construção de SPAs modernas com React e Next.js (App Router, components, SSR), além de estudos exploratórios em Vue.js.</p>
               <div className="tags-tech font-mono">
+                <span>React</span>
+                <span>Next.js</span>
+                <span>Vue.js</span>
                 <span>Components</span>
-                <span>Hooks</span>
-                <span>SSR</span>
               </div>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          {/* Card 4: Linguagens Web (JavaScript & TypeScript) */}
+          <FadeIn delay={0.4}>
             <div className="card-tech-modern card-surface">
               <div className="tech-badge-icon ts">
                 <i className="bx bxl-typescript"></i>
               </div>
-              <h4>JavaScript & TypeScript</h4>
-              <p>Lógica de programação, manipulação assíncrona, tipagem estática rigorosa e escalabilidade.</p>
+              <h4>Linguagens Web (JS & TS)</h4>
+              <p>Base sólida de lógica de programação com JavaScript moderno (ES6+), manipulação assíncrona e tipagem estática rigorosa com TypeScript.</p>
               <div className="tags-tech font-mono">
+                <span>JavaScript</span>
+                <span>TypeScript</span>
                 <span>ES6+</span>
                 <span>Tipagem</span>
-                <span>Interfaces</span>
               </div>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
-            <div className="card-tech-modern card-surface">
-              <div className="tech-badge-icon html">
-                <i className="bx bxl-html5"></i>
-              </div>
-              <h4>HTML5 & CSS Moderno</h4>
-              <p>Semântica acessível, Flexbox, CSS Grid, animações fluidas e design totalmente responsivo para qualquer tela.</p>
-              <div className="tags-tech font-mono">
-                <span>Flexbox</span>
-                <span>Grid</span>
-                <span>Keyframes</span>
-              </div>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.4}>
-            <div className="card-tech-modern card-surface">
-              <div className="tech-badge-icon node">
-                <i className="bx bxl-nodejs"></i>
-              </div>
-              <h4>Back-End & Banco de Dados</h4>
-              <p>Conhecimentos em Node.js, Python, consumo e modelagem básica de APIs REST e integrações SQL.</p>
-              <div className="tags-tech font-mono">
-                <span>Node.js</span>
-                <span>Python</span>
-                <span>SQL</span>
-              </div>
-            </div>
-          </FadeIn>
-
+          {/* Card 5: Linguagem & Scripts (Python) */}
           <FadeIn delay={0.5}>
             <div className="card-tech-modern card-surface">
-              <div className="tech-badge-icon git">
-                <i className="bx bxl-git"></i>
+              <div className="tech-badge-icon node">
+                <i className="bx bxl-python"></i>
               </div>
-              <h4>Git, GitHub & Vercel</h4>
-              <p>Controle de versão, branches, commits convencionais e deploy contínuo integrado (CI/CD).</p>
+              <h4>Linguagem & Scripts (Python)</h4>
+              <p>Lógica de algoritmos, automações e scripts práticos já desenvolvidos em projetos de estudo utilizando Python.</p>
               <div className="tags-tech font-mono">
-                <span>Git Flow</span>
-                <span>Deploy CI/CD</span>
-                <span>Vercel</span>
+                <span>Python</span>
+                <span>Lógica</span>
+                <span>Scripts</span>
+                <span>Automação</span>
               </div>
             </div>
           </FadeIn>
 
+          {/* Card 6: Estrutura, Runtime & Git */}
           <FadeIn delay={0.6}>
             <div className="card-tech-modern card-surface">
-              <div className="tech-badge-icon tools">
-                <i className="bx bx-cog"></i>
+              <div className="tech-badge-icon html">
+                <i className="bx bxl-nodejs"></i>
               </div>
-              <h4>Ferramentas & Qualidade</h4>
-              <p>VS Code, ESLint, Postman para testes de requisições e interesse contínuo em Cloud (AWS Foundations).</p>
+              <h4>Node.js, Web & Git</h4>
+              <p>Execução server-side e APIs com Node.js, marcação semântica com HTML5/CSS3 responsivo e versionamento contínuo com Git e GitHub.</p>
               <div className="tags-tech font-mono">
-                <span>VS Code</span>
-                <span>Postman</span>
-                <span>AWS</span>
+                <span>Node.js</span>
+                <span>HTML5 / CSS3</span>
+                <span>Git & GitHub</span>
+                <span>Vercel</span>
               </div>
             </div>
           </FadeIn>
@@ -401,10 +429,10 @@ export default async function Home() {
       <section id="contato" className="section-block section-contato">
         <div className="section-header text-center">
           <span className="section-label font-mono">05 // CONEXÃO</span>
-          <h2 className="section-title">Vamos Construir Algo Juntos?</h2>
+          <h2 className="section-title">Aberto a Estágio & Freelas</h2>
           <p className="section-desc">
-            Estou à procura de novas oportunidades, desafios e trocas de conhecimento.
-            Sinta-se à vontade para me chamar em qualquer canal!
+            Estou em busca da minha primeira oportunidade de estágio em TI e disponível para projetos freelance (sites, landing pages e interfaces).
+            Vamos conversar?
           </p>
           <div className="section-divider mx-auto"></div>
         </div>
