@@ -132,7 +132,10 @@ export default function MorphingBlob3D() {
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
     let animationId: number;
-    let startTime = performance.now();
+    const startTime = performance.now();
+    let isVisible = true;
+    let isRunning = false;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -147,6 +150,12 @@ export default function MorphingBlob3D() {
     window.addEventListener("resize", resize);
 
     const render = () => {
+      // Se saiu da tela, interrompe o loop
+      if (!isVisible) {
+        isRunning = false;
+        return;
+      }
+
       const elapsed = (performance.now() - startTime) * 0.001;
       gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
       gl.uniform1f(timeLocation, elapsed);
@@ -155,12 +164,29 @@ export default function MorphingBlob3D() {
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
-      animationId = requestAnimationFrame(render);
+
+      // Se o usuário prefere reduzir movimento, desenha um único frame cerâmico estático
+      if (!prefersReducedMotion) {
+        animationId = requestAnimationFrame(render);
+      } else {
+        isRunning = false;
+      }
     };
 
-    render();
+    // Cria o observador que vigia se o canvas está na tela
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      // Se voltou para a tela e o loop está pausado, religa o motor
+      if (isVisible && !isRunning) {
+        isRunning = true;
+        animationId = requestAnimationFrame(render);
+      }
+    });
+
+    observer.observe(canvas);
 
     return () => {
+      observer.disconnect();
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationId);
     };
