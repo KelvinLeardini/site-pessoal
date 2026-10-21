@@ -290,6 +290,25 @@ body {
 }
 
 /* ==========================================================================
+   ANIMAÇÃO NATIVA DE FADE-IN (100% CSS, ZERO BUG DE HYDRATION)
+   ========================================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-element {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+/* ==========================================================================
    WRAPPER ONE-PAGE & SEÇÕES
    ========================================================================== */
 .onepage-wrapper {
@@ -1091,6 +1110,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .fade-in-element {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
   *,
   *::before,
   *::after {
