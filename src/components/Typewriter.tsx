@@ -12,15 +12,29 @@ interface TypewriterProps {
 }
 
 function subscribeReducedMotion(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
-  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  mediaQuery.addEventListener("change", callback);
-  return () => mediaQuery.removeEventListener("change", callback);
+  if (typeof window === "undefined" || !window.matchMedia) return () => {};
+  try {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", callback);
+      return () => mediaQuery.removeEventListener("change", callback);
+    } else if (typeof mediaQuery.addListener === "function") {
+      mediaQuery.addListener(callback);
+      return () => mediaQuery.removeListener(callback);
+    }
+  } catch {
+    // Fallback seguro para webviews e navegadores antigos
+  }
+  return () => {};
 }
 
 function getReducedMotionSnapshot() {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (typeof window === "undefined" || !window.matchMedia) return false;
+  try {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch {
+    return false;
+  }
 }
 
 function getReducedMotionServerSnapshot() {
@@ -94,4 +108,3 @@ export default function Typewriter({
     </span>
   );
 }
-

@@ -396,6 +396,11 @@ body {
   display: block;
 }
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
 .hero-badge-container {
   display: inline-flex;
   align-items: center;
@@ -1007,6 +1012,12 @@ body {
     display: block;
   }
 
+  .hero-3d-blob-wrapper {
+    width: 320px;
+    height: 320px;
+    opacity: 0.65;
+  }
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -1019,12 +1030,16 @@ body {
     flex-direction: column;
     padding: 24px;
     gap: 12px;
-    transform: translateY(-150%);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
   }
 
   .nav-menu.aberto {
+    opacity: 1;
+    pointer-events: auto;
     transform: translateY(0);
   }
 
@@ -1055,6 +1070,26 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero-actions .btn-modern {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-actions .btn-icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1063,5 +1098,12 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Garante que nenhum elemento fique invisivel por animacao pausada */
+  [style*="opacity: 0"],
+  [style*="opacity:0"] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
