@@ -290,22 +290,19 @@ body {
 }
 
 /* ==========================================================================
-   ANIMAÇÃO NATIVA DE FADE-IN (100% CSS, ZERO BUG DE HYDRATION)
+   SCROLL REVEAL (EFEITO CASCATA DINÂMICO SOB DEMANDA AO ROLAR ATÉ A SEÇÃO)
    ========================================================================== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.fade-in-element {
-  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-  will-change: opacity, transform;
+.scroll-reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================================================================
@@ -1110,10 +1107,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-in-element {
-    animation: none !important;
+  .scroll-reveal-item {
     opacity: 1 !important;
     transform: none !important;
+    transition: none !important;
   }
   *,
   *::before,
